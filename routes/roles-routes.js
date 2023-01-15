@@ -4,15 +4,23 @@ const {auth} = require('../app/controllers/middleware/auth')
 const {roleCheck} = require('../app/controllers/middleware/auth')
 
 
-router.post("/add" , rolesControles.addRole);
+router.post("/add" /*, auth , roleCheck */ ,rolesControles.addRole);
 
-// router.post("/remove" , rolesControles.removeRole);
+router.get("/show-all" /*, auth , roleCheck */, rolesControles.showRoles);
 
-// router.post("/update" , rolesControles.updateRole);
+router.get("/show-role/:roleId" /*, auth , roleCheck */, rolesControles.showRole);
 
-// router.post("/show-roles" , rolesControles.showRoles);
+// router.get("/users/:roleId" /*, auth , roleCheck */, rolesControles.roleUsers);
 
-// router.post("/show-role/:role" , rolesControles.showRole);
+router.put("/update/:roleId" /*, auth , roleCheck */, rolesControles.updateRole);
+
+router.delete("/remove/:roleId" /*, auth , roleCheck */, rolesControles.removeRole);
+
+
+
+
+
+
 
 
 

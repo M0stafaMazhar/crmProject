@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+
 const UnitSchema = mongoose.Schema({
     floorId:{
         type: mongoose.Types.ObjectId,
@@ -69,8 +71,14 @@ const UnitSchema = mongoose.Schema({
         paymentValue:{
             type:Number,
             trim: true,
-            
+            required: true,
+        },
+
+        paymentStat:{
+            type:Boolean,
+            default:false,
         }
+
 
     }],
 

@@ -9,9 +9,11 @@ router.post('/add-project' , auth /*, roleCheck */, projectController.addProject
 
 router.get('/show/all' , projectController.allProjects)
 router.get('/show/:id' , projectController.showProject)
+// router.get('/customers/:id' , auth /*, roleCheck */, projectController.projectCustomers)  admin & superadmin
 
 
 router.put('/update/:id', auth ,/* roleCheck ,*/ projectController.editProject)      //admin & superadmin
+
 router.delete('/delete/:id', auth, /*roleCheck,*/ projectController.deleteProject)  //admin & superadmin
 
 

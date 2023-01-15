@@ -1,0 +1,119 @@
+user:{
+    userType:{
+        type: string,
+        required: true,
+        true: true,
+    }
+
+    userName:{
+        type: string,
+        unique: true,
+        trim : true,
+        lowercase: true,
+        required: true
+    }
+    
+    fName:{
+        type: string,
+        trim: true,
+        lowercase: true,
+        required: true
+    }
+
+    lName:{
+        type: string,
+        trim: true,
+        lowercase: true,
+        required: true
+    }
+
+    password:{
+        type: string,
+        required: true,
+        trim: true,
+        lowe
+        required: true
+    }
+
+    roleId:{
+        type: objectId,
+        required: true,
+    }
+
+    token:{
+
+    }
+
+    recites:[{}]
+
+}
+
+roles:{
+
+}
+
+projects{
+    projectType:{
+        type: string,
+        trim: true,
+        required: true
+    }
+
+    projectName:{
+        type: string,
+        trim: true,
+        required: true
+    }
+
+    projectImages:[{}]
+}
+
+
+
+bulding:{
+     projectId:{
+        type: objectId,
+        required: true
+    }
+
+    buldingNumber:{
+        type: string,
+        required: true,
+        trim: true
+    }
+
+    buldingImages:[{}]
+
+    floors[{
+        floorNum:{
+            type: string,
+            required: true,
+            trim: true
+        }
+        units:[{
+            unitNum:{
+                type: string,
+            }
+
+            price:{
+                type: number,
+                required: true
+            }
+
+            status:{
+                type: boolean
+                default: true
+            }
+
+            payment:{
+
+            }
+
+            customerId:{
+
+            }
+
+            unitImages:[{}]
+        }]
+    }]
+}

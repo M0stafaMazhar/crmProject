@@ -2,8 +2,13 @@ require("../db/dbConnect")
 
 const express = require('express');
 const app = express();
+const cors = require('cors')
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json());
+app.use(cors())
+app.use('/public', express.static('public'))
+
+
 const userRoutes = require("../routes/users-routes");
 const roleRoutes = require("../routes/roles-routes");
 const projectsRoutes = require("../routes/projects-routes");

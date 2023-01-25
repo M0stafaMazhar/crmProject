@@ -2,6 +2,7 @@ const router = require('express').Router();
 const unitsControles = require("../app/controllers/units-controllers")
 const {auth} = require('../app/controllers/middleware/auth')
 const {roleCheck} = require('../app/controllers/middleware/auth')
+const upload = require('../app/controllers/middleware/file-upload')
 
 
 
@@ -15,6 +16,11 @@ router.put("/update/:unitId" ,  /* auth , roleCheck , */ unitsControles.updateUn
 
 router.delete("/delete/:unitId" ,  /* auth , roleCheck , */ unitsControles.deleteUnit)                                           //admin & super
 
+
+router.post("/sell/:unitId" ,  auth ,/* roleCheck , */ unitsControles.sellUnit)
+router.put("/payment/activate/:paymentId" , auth ,/* roleCheck , */  unitsControles.changePaymentStat)
+
+router.post('/add-image/:id', auth,/*roleCheck,*/upload.array("avatar") , unitsControles.uploadImage) //admin & superadmin)
 
 
 

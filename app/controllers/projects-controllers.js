@@ -60,6 +60,24 @@ class Projects{
             helper.resHandler(res , 500 , false , err , err.message)
         }
     }
+
+    static uploadImage = async (req, res)=>{
+        try{
+        const projectData = await projectModel.findById(req.params.id)
+        if(!projectData) throw new Error("project does not exist")
+        req.files.forEach(f => projectData.projectImages.push(f.filename))
+        await projectData.save()
+
+        helper.resHandler(res , 200 , true , projectData , "images added successfully")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+
+
+       
+
+    }
 }
 
 

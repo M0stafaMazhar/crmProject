@@ -5,7 +5,7 @@ const {roleCheck} = require('../app/controllers/middleware/auth')
 
 
 router.post('/register', userControles.register);
-router.get('/login', userControles.logIn); 
+router.post('/login', userControles.logIn); 
 router.get('/logout', auth ,userControles.logOut);
 
 router.get('/myProfile', auth ,userControles.myProfile);

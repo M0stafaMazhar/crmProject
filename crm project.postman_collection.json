@@ -1,0 +1,1016 @@
+{
+	"info": {
+		"_postman_id": "444fc6b7-349f-42bb-9543-39fed00ae702",
+		"name": "crm project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23788611"
+	},
+	"item": [
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roleName\":\"new\",\r\n    \"urls\":[{\r\n        \"url\":\"test\",\r\n        \"method\":\"get\",\r\n        \"params\":[\"test\" , \"view\"],\r\n        \"query\":[\"test\" , \"view\"]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}role/add",
+							"host": [
+								"{{BaseUrl}}role"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}role/show-all",
+							"host": [
+								"{{BaseUrl}}role"
+							],
+							"path": [
+								"show-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show one",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}role/show-role/63a8bc910fe536e5580764c8",
+							"host": [
+								"{{BaseUrl}}role"
+							],
+							"path": [
+								"show-role",
+								"63a8bc910fe536e5580764c8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"urls\":[{\r\n        \"params\":[\"test\"],\r\n        \"query\":[\"view\"]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}role/update/63a8bc910fe536e5580764c8",
+							"host": [
+								"{{BaseUrl}}role"
+							],
+							"path": [
+								"update",
+								"63a8bc910fe536e5580764c8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"urls\":[{\r\n        \"params\":[\"test\"],\r\n        \"query\":[\"view\"]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}role/remove/63a8bc910fe536e5580764c8",
+							"host": [
+								"{{BaseUrl}}role"
+							],
+							"path": [
+								"remove",
+								"63a8bc910fe536e5580764c8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"Mostafa\",\r\n    \"lName\":\"Mazhar\",\r\n    \"userName\":\"mostafaCustomer\",\r\n    \"password\":\"Mm1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/register",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"mostafaCustomer\",\r\n    \"password\":\"Mm1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/login",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logOut",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTV9.xghsCyJFkXWyZ5OGRyXCKry0R74n0MuwYUpzSQJpOFQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/logout",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myProfile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"mostafaCustomer\",\r\n    \"password\":\"Mm1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/myprofile",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"myprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showCustomer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/customer/63bc8947003491a510a8f6ce",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"customer",
+								"63bc8947003491a510a8f6ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showAdmin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/admin/63bc8947003491a510a8f6ce",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"admin",
+								"63bc8947003491a510a8f6ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit MyProfile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"salahh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/edit-myprofile",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"edit-myprofile"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"mohsen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/edit-customer/63bc45892e87d33484452197",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"edit-customer",
+								"63bc45892e87d33484452197"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editAdmin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/edit/admin/63bc45892e87d33484452197",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"edit",
+								"admin",
+								"63bc45892e87d33484452197"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjODk0NzAwMzQ5MWE1MTBhOGY2Y2UiLCJpYXQiOjE2NzMzMDAzMDJ9.ihb9H0KZYxsfeyssdnUPl_1TglwdeE2jywpI6jLys00",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/delete/customer/63bc8947003491a510a8f6ce",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"delete",
+								"customer",
+								"63bc8947003491a510a8f6ce"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAdmin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjODk0NzAwMzQ5MWE1MTBhOGY2Y2UiLCJpYXQiOjE2NzMzMDAzMDJ9.ihb9H0KZYxsfeyssdnUPl_1TglwdeE2jywpI6jLys00",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}user/delete/admin/63bc8947003491a510a8f6ce",
+							"host": [
+								"{{BaseUrl}}user"
+							],
+							"path": [
+								"delete",
+								"admin",
+								"63bc8947003491a510a8f6ce"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjNDU4OTJlODdkMzM0ODQ0NTIxOTciLCJpYXQiOjE2NzMyODM0MTN9.0iBwTvXVTW_8Yi-MRfNOsxnoyniZ6dCq381ks6Rk9LM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "projects",
+			"item": [
+				{
+					"name": "add project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDF9.4QBmP6kgB2RYD5bXpqqvdUAiwb78jqhU0VCytMG_Rjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\":\"mango\",\r\n    \"projectLocation\":\"cairo\",\r\n    \"projectType\":\"for sale\",\r\n    \"description\":\"fef kmrkfmk kfmfeofkleo,m eleofmfmefomfmeom  oekdoof\",\r\n    \"buldings\":[{\"buldingNum\":\"x\" , \"floors\":[{\"floorNum\":\"1\"} , {\"floorNum\":\"2\"}]}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}project/add-project",
+							"host": [
+								"{{BaseUrl}}project"
+							],
+							"path": [
+								"add-project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}project/show/all",
+							"host": [
+								"{{BaseUrl}}project"
+							],
+							"path": [
+								"show",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}project/show/63bca0abd2273cb6d8d6f3d5",
+							"host": [
+								"{{BaseUrl}}project"
+							],
+							"path": [
+								"show",
+								"63bca0abd2273cb6d8d6f3d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit project",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDF9.4QBmP6kgB2RYD5bXpqqvdUAiwb78jqhU0VCytMG_Rjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\":\"shorouk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}project/update/63bca0abd2273cb6d8d6f3d5",
+							"host": [
+								"{{BaseUrl}}project"
+							],
+							"path": [
+								"update",
+								"63bca0abd2273cb6d8d6f3d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit project Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDF9.4QBmP6kgB2RYD5bXpqqvdUAiwb78jqhU0VCytMG_Rjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}project/delete/63bca0abd2273cb6d8d6f3d5",
+							"host": [
+								"{{BaseUrl}}project"
+							],
+							"path": [
+								"delete",
+								"63bca0abd2273cb6d8d6f3d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-project-images",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDV9.P6uF7ovElUMIFlU3DwEEBomXwER-2I5orjqiWXu0uXY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/mosta/Downloads/Random Pics so I dont lose them 2 - Haikyuu 39.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}project/add-image/63bca0a8d2273cb6d8d6f3cc",
+							"host": [
+								"{{BaseUrl}}project"
+							],
+							"path": [
+								"add-image",
+								"63bca0a8d2273cb6d8d6f3cc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "units",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"unitNum\":1,\r\n    \"unitDescription\":\"dgdgdfdg dgdlg,vdl d g dlgmdlf,f bld,\",\r\n    \"unitSize\":200,\r\n    \"price\":100000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/add/63bca049d2273cb6d8d6f3c4",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"add",
+								"63bca049d2273cb6d8d6f3c4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/show-all",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"show-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show one",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/show-unit/63c2e0a7f68ac3c30d42cfbf",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"show-unit",
+								"63c2e0a7f68ac3c30d42cfbf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"unitNum\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/update/63c2e0a7f68ac3c30d42cfbf",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"update",
+								"63c2e0a7f68ac3c30d42cfbf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/delete/63c2e0a7f68ac3c30d42cfbf",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"delete",
+								"63c2e0a7f68ac3c30d42cfbf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sell",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"63bc8f25296f31762eca7582\",\r\n    \"downPayment\": 20000,\r\n    \"numOfPayments\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/sell/63c33f5685a28590b20e823b",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"sell",
+								"63c33f5685a28590b20e823b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activatePayment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDR9.s12MCjilDTB2l9-sPOcUmVB-gb8zrnmHOFJhfDhUsSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"63bc8f25296f31762eca7582\",\r\n    \"downPayment\": 20000,\r\n    \"numOfPayments\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/sell/63c33f5685a28590b20e823b",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"sell",
+								"63c33f5685a28590b20e823b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-unit-images",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JjOGYyNTI5NmYzMTc2MmVjYTc1ODIiLCJpYXQiOjE2NzMzMDE4MDV9.P6uF7ovElUMIFlU3DwEEBomXwER-2I5orjqiWXu0uXY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": [
+										"/C:/Users/mosta/Downloads/e2db1d8e-5642-446f-8216-1fefe5dbd9b7.jpg",
+										"/C:/Users/mosta/Downloads/h a i k y u u.jpg",
+										"/C:/Users/mosta/Downloads/Random Pics so I dont lose them 2 - Haikyuu 39.jpg"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}unit/add-image/63c33f4385a28590b20e8231",
+							"host": [
+								"{{BaseUrl}}unit"
+							],
+							"path": [
+								"add-image",
+								"63c33f4385a28590b20e8231"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "http://localhost:3000/api/"
+		}
+	]
+}

@@ -62,7 +62,7 @@ const UnitSchema = mongoose.Schema({
     },
 
     payments:[{
-        paymentNum:{
+            paymentNum:{
             type:Number,
             trim: true,
             required: true
@@ -78,8 +78,6 @@ const UnitSchema = mongoose.Schema({
             type:Boolean,
             default:false,
         }
-
-
     }],
 
 } , {timestamps:true})

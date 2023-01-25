@@ -63,6 +63,64 @@ class Unit{
             helper.resHandler(res , 500 , false , err , err.message)
         }
     }
+
+    static sellUnit = async (req , res)=>{
+        try{
+            const unitData = await unitModel.findById(req.params.unitId)
+            if(!unitData) throw new Error("unit not found")
+            if(unitData.status == true) throw new Error("unit sold already")
+            unitData.customerId = req.body.customerId
+            unitData.downPayment = req.body.downPayment
+
+            const paymentValue = (unitData.price - unitData.downPayment) / req.body.numOfPayments
+
+            let payments = Array.apply(null, Array(req.body.numOfPayments))
+
+            unitData.payments =  payments.map( (p , index) => p = {paymentNum : index+1,
+                                                                    paymentValue : paymentValue })
+
+            unitData.employeeId = req.user._id
+            unitData.status = true
+
+            await unitData.save()
+
+            helper.resHandler(res , 200, true , unitData , "unit sold successfully")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
+
+    static changePaymentStat = async(req ,res)=>{
+        try{
+            const unitData = await unitModel.findOne({"payments._id" : req.params.paymentId})
+            if(!unitData)throw new Error("No such unit")
+
+            const paymentIndex = unitData.payments.findIndex(p => p._id.toString() == req.params.paymentId) 
+            unitData.payments[paymentIndex].paymentStat = !unitData.payments[paymentIndex].paymentStat
+
+            await unitData.save()
+
+            helper.resHandler(res , 200 , true , unitData , "payment status changed successfully")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
+
+    static uploadImage = async (req, res)=>{
+        try{
+        const unitData = await unitModel.findById(req.params.id)
+        if(!unitData) throw new Error("unit does not exist")
+        req.files.forEach(f => unitData.unitImages.push(f.filename) )
+        await unitData.save()
+        
+        helper.resHandler(res , 200 , true , unitData , "images added successfully")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
 }
 
 

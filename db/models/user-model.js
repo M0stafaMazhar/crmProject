@@ -1,6 +1,7 @@
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose"); 
+const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
     userName:{
@@ -8,7 +9,8 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim : true,
         lowercase: true,
-        required: true
+        required: true,
+        // length: 14,
     },
     
     fName:{
@@ -30,6 +32,15 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         required: true
+    },
+
+    phone:{
+        type: String,
+        required: true,
+        trim: true,
+        validate(value){
+            if(!validator.isMobilePhone(value , "ar-EG")) throw new Error("invalid phone number")
+        }
     },
 
     role:{

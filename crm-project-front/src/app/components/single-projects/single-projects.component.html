@@ -1,1 +1,24 @@
-<p>single-projects works!</p>
+<div class="container-fluid p-3 text-center">
+   <div class="col-12 bg-light card">
+    <h1>{{projectData.projectName}}</h1>
+    <h4>{{projectData.projectLocation}}</h4>
+    <p>{{projectData.description}}</p>
+    <div class="row p-3">
+        <h3>Buldings:</h3>
+        <div class="p-3 col-12 col-lg-4" *ngFor="let item of buldingsData , let i = index">
+            <div class="bg-dark text-light card p-3">
+                <a routerLink="/bulding/item._id"><img src="{{baseUrl+item.buldingImages[0]}}" class="col-12" height="300" width="400" alt=""></a>
+                <h4>Bulding : {{item.buldingNum}}</h4>
+            </div>
+        </div>
+
+    <div class="row p-3">
+        <h3>Project Images:</h3>
+        <div class="p-3 col-12 col-lg-4" *ngFor="let item of images , let i = index">
+            <div class="bg-dark text-light card p-2">
+                <img src="{{baseUrl+item}}" class="col-12" height="300" width="400" alt="">
+            </div>
+        </div>
+    </div>
+    </div>    
+</div>

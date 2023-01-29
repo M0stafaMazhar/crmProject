@@ -10,6 +10,7 @@ const auth = async (req, res, next) => {
         const token = req.header("authorization").replace("Bearer ", "")
         const decoded = jwt.verify(token, "password");
         const userData = await userModel.findOne({_id: decoded._id, "tokens.token":token})
+        if (!userData) throw new Error("un authorized access")
         req.user = userData
         req.token = token
         next()

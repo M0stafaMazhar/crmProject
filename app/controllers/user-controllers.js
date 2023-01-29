@@ -48,14 +48,26 @@ class UserControles{
 
     static showUser = async(req, res)=>{
         try{
-            const userType = req.url.split('/')[1]
-            const userData = await userModel.findOne({_id : req.params.id , "role.roleName" : userType})
+            const userData = await userModel.findById(req.params.id)
             if(!userData) throw new Error("User not found")
-            Helper.resHandler(res, 200, true, userData,  userType + " profile")
+            Helper.resHandler(res, 200, true, userData,  "user profile")
         }
         catch(err){
             Helper.resHandler(res, 500, false, err, err.message)
         }
+    }
+
+    static getAllUsers = async(req , res)=>{
+        try{
+        const usersData = await userModel.find();
+        if(!usersData.length)throw new Error('No users to show yet');
+
+        Helper.resHandler(res , 200 , true , usersData , "users found")
+        }
+        catch(err){
+            Helper.resHandler(res, 500, false, err, err.message)
+        }
+        
     }
 
     static editMyProfile = async(req, res)=>{
@@ -85,10 +97,9 @@ class UserControles{
 
     static deleteUser = async(req,res)=>{
         try{
-            const userType = req.url.split('/')[2]
-            const userData = await userModel.findOneAndDelete({_id : req.params.id , "role.roleName" : userType})
+            const userData = await userModel.findByIdAndDelete(req.params.id)
             if(!userData) throw new Error("User not found")
-            Helper.resHandler(res, 200, true, {} , userType+" deleted successfully")
+            Helper.resHandler(res, 200, true, {} , "user deleted successfully")
         }
         catch(err){
             Helper.resHandler(res, 500, false, err, err.message)

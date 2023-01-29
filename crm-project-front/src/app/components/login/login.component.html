@@ -8,19 +8,26 @@
             <div class="card-body p-5 " >
               <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-              <form>
+              <div class="alert alert-danger" *ngIf="errorFlag">
+                <h5>{{errMessage}}</h5>
+              </div>
+
+              <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
 
                 <div class="form-outline">
-                  <input type="text" class="form-control form-control-lg" name="userName" placeholder="National ID"/>
+                  <input type="text" class="form-control form-control-lg" formControlName="userName" placeholder="National ID"/>
+                  <div class="alert alert-danger" *ngIf="submitFlag && Data?.['userName']?.errors?.['required']"><p>Reqired</p></div>
+                  <div class="alert alert-danger" *ngIf="(Data?.['userName']?.dirty || submitFlag) && Data?.['userName']?.errors?.['pattern']"><p>Invalid National ID</p></div>
                 </div>
 
                 
                 <div class="form-outline my-4">
-                  <input type="password" class="form-control form-control-lg" name="password" placeholder="Password"/>
+                  <input type="password" class="form-control form-control-lg" formControlName="password" placeholder="Password"/>
+                  <div class="alert alert-danger" *ngIf="submitFlag && Data?.['password']?.errors?.['required']"><p>Reqired</p></div>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button"
+                  <button type="submit"
                     class="btn btn-dark btn-block btn-lg gradient-custom-4 text-success">Login</button>
                 </div>
 

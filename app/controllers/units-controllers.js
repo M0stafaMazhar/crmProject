@@ -121,6 +121,18 @@ class Unit{
             helper.resHandler(res , 500 , false , err , err.message)
         }
     }
+
+    static floorUnits = async(req, res)=>{
+        try{
+            const unitsData = await unitModel.find({floorId: req.params.floorId})
+            if(!unitsData.length) throw new Error(`Unable to find units`)
+            helper.resHandler(res , 200 , true , unitsData , "floor Units")
+            
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
 }
 
 

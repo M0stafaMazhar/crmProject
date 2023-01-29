@@ -7,7 +7,7 @@
         <h3>Buldings:</h3>
         <div class="p-3 col-12 col-lg-4" *ngFor="let item of buldingsData , let i = index">
             <div class="bg-dark text-light card p-3">
-                <a routerLink="/bulding/item._id"><img src="{{baseUrl+item.buldingImages[0]}}" class="col-12" height="300" width="400" alt=""></a>
+                <a routerLink="/bulding/{{item._id}}"><img src="{{baseUrl+item.buldingImages[0]}}" class="col-12" height="300" width="400" alt=""></a>
                 <h4>Bulding : {{item.buldingNum}}</h4>
             </div>
         </div>

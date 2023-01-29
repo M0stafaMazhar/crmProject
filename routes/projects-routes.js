@@ -10,6 +10,8 @@ router.post('/add-project' , auth /*, roleCheck */, projectController.addProject
 
 router.get('/show/all' , projectController.allProjects)
 router.get('/show/:id' , projectController.showProject)
+router.get("/bulding/:buldingId" , auth ,/*  roleCheck ,*/projectController.getBulding)
+
 // router.get('/customers/:id' , auth /*, roleCheck */, projectController.projectCustomers)  admin & superadmin
 
 

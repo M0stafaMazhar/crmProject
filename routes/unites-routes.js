@@ -11,6 +11,7 @@ router.post("/add/:floorId" ,  auth , /*roleCheck , */ unitsControles.add)
 
 router.get("/show-all" ,  /* auth , roleCheck , */ unitsControles.showAll)
 router.get("/show-unit/:unitId" ,  /* auth , roleCheck , */ unitsControles.showUnit)
+router.get("/floor/:floorId" , /* auth , roleCheck , */ unitsControles.floorUnits)
 
 router.put("/update/:unitId" ,  /* auth , roleCheck , */ unitsControles.updateUnit)  
 

@@ -78,6 +78,19 @@ class Projects{
        
 
     }
+
+    static getBulding =async(req, res)=>{
+        try{
+            const projectData = await projectModel.findOne({"buldings._id" : req.params.buldingId})
+            if(!projectData) throw new Error("Project not found")
+            const bulding = projectData.buldings.find(b => b._id == req.params.buldingId)
+            
+            helper.resHandler(res , 200 , true , bulding , "bulding found")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
 }
 
 

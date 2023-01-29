@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProjectComponent } from './components/add-project/add-project.component';
 import { BuldingComponent } from './components/bulding/bulding.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:"roles" , component:RolesComponent},
   {path:"bulding/:buldingId" , component:BuldingComponent},
   {path:"users", component:UsersComponent},
-  {path:"users/:userId" , component:SingleUserComponent}
+  {path:"users/:userId" , component:SingleUserComponent},
+  {path:"addproject" ,component:AddProjectComponent}
 ];
 
 @NgModule({

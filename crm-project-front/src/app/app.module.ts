@@ -22,6 +22,8 @@ import { UsersComponent } from './components/users/users.component';
 import { BuldingComponent } from './components/bulding/bulding.component';
 import { FloorComponent } from './components/floor/floor.component';
 import { SingleUserComponent } from './components/single-user/single-user.component';
+import { AddProjectComponent } from './components/add-project/add-project.component';
+import { AddUnitComponent } from './components/add-unit/add-unit.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { SingleUserComponent } from './components/single-user/single-user.compon
     UsersComponent,
     BuldingComponent,
     FloorComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    AddProjectComponent,
+    AddUnitComponent
   ],
   imports: [
     BrowserModule,

@@ -45,6 +45,16 @@ export class GlobalService {
     return this.http.get(this.baseUrl+"user/show/"+id) 
   }
 
+  getBulding(id:any):Observable<any>{
+    return this.http.get(this.baseUrl+"project/bulding/"+id) 
+  }
+
+  getFloorUnits(id:any):Observable<any>{
+    return this.http.get(this.baseUrl+"unit/floor/"+id) 
+  }
+
+
+
 
 
 }

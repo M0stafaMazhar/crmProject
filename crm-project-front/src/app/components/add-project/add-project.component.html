@@ -1,31 +1,42 @@
-<div class="ontainer p-3">
-    <div class="card bg-light p-3">
+<div class="ontainer p-3 d-flex justify-content-center">
+    <div class="card bg-light p-3 col-12 col-lg-6">
         <h2 class="text-uppercase text-center mb-5">Add Project</h2>
-        <form class="row">
+        <div class="alert alert-danger text-center" *ngIf="errFlag"><h6>{{errMessage}}</h6></div>
+        <div class="alert alert-success text-center" *ngIf="successFlag"><h6>{{successMessage}}</h6></div>
+        <form class="row" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
             <div class="form-outline col-12 col-lg-6 p-2">
-                <input type="text" class="form-control form-control-lg" placeholder="Project Name">
+                <input type="text" class="form-control form-control-lg" formControlName="projectName" placeholder="Project Name">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectName']?.errors?.['required']"><p>Reqired</p></div>
             </div>
             <div class="form-outline col-12 col-lg-6 p-2">
-                <input type="text" class="form-control form-control-lg" placeholder="Location">
+                <input type="text" class="form-control form-control-lg" formControlName="projectLocation" placeholder="Location">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectLocation']?.errors?.['required']"><p>Reqired</p></div>
             </div>
             <div class="form-outline col-12 p-2">
-                <textarea name="" class="form-control form-control-lg" placeholder="Description"></textarea>
+                <textarea name="" class="form-control form-control-lg" formControlName="description" placeholder="Description"></textarea>
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['description']?.errors?.['required']"><p>Reqired</p></div>
             </div>
             <div class="form-outline col-12 col-lg-4 p-2">
-                <input type="text" class="form-control form-control-lg" placeholder="Number of Buldings">
+                <input type="text" class="form-control form-control-lg" formControlName="numOfBuldings" placeholder="Number of Buldings">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['numOfBuldings']?.errors?.['required']"><p>Reqired</p></div>
+                <div class="alert alert-danger" *ngIf="(Data?.['numOfBuldings']?.dirty || submitFlag) && Data?.['numOfBuldings']?.errors?.['pattern']"><p>Only Numbers allowed</p></div>
+            </div> 
+            <div class="form-outline col-12 col-lg-4 p-2">
+                <input type="text" class="form-control form-control-lg" formControlName="numOfFloors" placeholder="Number of floors in each bulding">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['numOfFloors']?.errors?.['required']"><p>Reqired</p></div>
+                <div class="alert alert-danger" *ngIf="(Data?.['numOfFloors']?.dirty || submitFlag) && Data?.['numOfFloors']?.errors?.['pattern']"><p>Only Numbers allowed</p></div>
             </div>
             <div class="form-outline col-12 col-lg-4 p-2">
-                <input type="text" class="form-control form-control-lg" placeholder="Number of floors in each bulding">
-            </div>
-            <div class="form-outline col-12 col-lg-4 p-2">
-                <select name="" class="form-control form-control-lg">
+                <select name="" class="form-control form-control-lg" formControlName="projectType">
                     <option value="" disabled selected>Project Type</option>
-                    <option value="">For Sale</option>
-                    <option value="">For Show</option>
+                    <option value="for sale">For Sale</option>
+                    <option value="for show">For Show</option>
                 </select>
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectType']?.errors?.['required']"><p>Reqired</p></div>
             </div>
-            <div class="form-outline col-12 col-lg-6 p-2">
-                <input type="file" class="form-control form-control-lg" placeholder="" multiple>
+            <div class="form-outline col-12 p-2">
+                <input type="file" class="form-control form-control-lg" placeholder="" multiple  formControlName="images" (change)="imageUpload($event)">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['images']?.errors?.['required']"><p>Reqired</p></div>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit"

@@ -10,7 +10,7 @@
             </div>
             <div class="row p-2">
                 <div class="p-2 col-12 col-lg-6">
-                   <a class="btn btn-success col-12">Edit</a> 
+                   <a class="btn btn-success col-12" routerLink="/projects/update/{{item._id}}">Edit</a> 
                </div>
                 <div class="p-2 col-12 col-lg-6">
                    <a class="btn btn-danger col-12" (click)="deleteProject(item._id , i)">Delete</a> 

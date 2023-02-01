@@ -8,11 +8,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./bulding.component.css']
 })
 export class BuldingComponent {
+  errFlag = false
+  floorId: any
   buldingData: any
   images:any
   floors:any
   units:any
   baseUrl = "http://localhost:3000/public/images/uploads/"
+  
   constructor(private activated : ActivatedRoute , private global : GlobalService){
     let buldingId = this.activated.snapshot.paramMap.get('buldingId')
     this.global.getBulding(buldingId).subscribe((res)=>{
@@ -29,18 +32,29 @@ export class BuldingComponent {
   }
 
   selectedFloor(e:any){
-    console.log(e.target.value);
+    this.floorId = e.target.value
     
     this.global.getFloorUnits(e.target.value).subscribe((res)=>{
-     console.log(res);
      this.units = res.data
+     this.errFlag = false
       
     },(err)=>{
-      console.log(err);
-      
+      this.errFlag = true
+      this.units =[]
     },()=>{
 
     })
   }
 
+  deleteUnit(id:any , i:any){
+    this.global.deleteUnit(id).subscribe((res)=>{
+      this.units.splice(i,1)
+       
+     },(err)=>{
+       
+     },()=>{
+ 
+     })
+
+  }
 }

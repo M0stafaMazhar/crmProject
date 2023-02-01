@@ -77,8 +77,6 @@ export class RegisterComponent {
       role: this.role
     }
 
-    console.log(this.registerForm.valid);
-    
     if(this.registerForm.valid){
       this.global.register(this.userData).subscribe((res)=>{
         this.successFlag = true;

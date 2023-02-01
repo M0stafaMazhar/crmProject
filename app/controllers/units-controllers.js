@@ -8,6 +8,7 @@ class Unit{
             const projectData = await projectModel.findOne({"buldings.floors._id":req.params.floorId})
             if(!projectData) throw new Error("project does not exist")
             const unitData =  unitModel({floorId : req.params.floorId , ...req.body})
+            req.files.forEach(f => unitData.unitImages.push(f.filename) )
             await unitData.save()
             helper.resHandler(res , 200 , true , unitData , "unit added successfully")
         }

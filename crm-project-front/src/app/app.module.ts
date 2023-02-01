@@ -24,6 +24,9 @@ import { FloorComponent } from './components/floor/floor.component';
 import { SingleUserComponent } from './components/single-user/single-user.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { AddUnitComponent } from './components/add-unit/add-unit.component';
+import { UpdateProjectComponent } from './components/update-project/update-project.component';
+import { UpdateUnitComponent } from './components/update-unit/update-unit.component';
+import { UpdateBuldingComponent } from './components/update-bulding/update-bulding.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { AddUnitComponent } from './components/add-unit/add-unit.component';
     FloorComponent,
     SingleUserComponent,
     AddProjectComponent,
-    AddUnitComponent
+    AddUnitComponent,
+    UpdateProjectComponent,
+    UpdateUnitComponent,
+    UpdateBuldingComponent
   ],
   imports: [
     BrowserModule,

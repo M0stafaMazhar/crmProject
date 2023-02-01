@@ -6,7 +6,7 @@ const upload = require('../app/controllers/middleware/file-upload')
 
 
 
-router.post('/add-project' , auth /*, roleCheck */, projectController.addProject)    //admin & superadmin
+router.post('/add-project' , auth , upload.array("avatar") /*, roleCheck */, projectController.addProject)    //admin & superadmin
 
 router.get('/show/all' , projectController.allProjects)
 router.get('/show/:id' , projectController.showProject)

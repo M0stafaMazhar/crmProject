@@ -7,7 +7,7 @@ const upload = require('../app/controllers/middleware/file-upload')
 
 
 
-router.post("/add/:floorId" ,  auth , /*roleCheck , */ unitsControles.add)
+router.post("/add/:floorId" ,  auth , upload.array("avatar") ,/*roleCheck , */ unitsControles.add)
 
 router.get("/show-all" ,  /* auth , roleCheck , */ unitsControles.showAll)
 router.get("/show-unit/:unitId" ,  /* auth , roleCheck , */ unitsControles.showUnit)

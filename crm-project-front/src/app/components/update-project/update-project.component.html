@@ -1,0 +1,33 @@
+<div class="ontainer p-3 d-flex justify-content-center">
+    <div class="card bg-light p-3 col-12 col-lg-6">
+        <h2 class="text-uppercase text-center mb-5">Update Project Details</h2>
+        <div class="alert alert-danger text-center" *ngIf="errFlag"><h6>{{errMessage}}</h6></div>
+        <div class="alert alert-success text-center" *ngIf="successFlag"><h6>{{successMessage}}</h6></div>
+        <form class="row" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+            <div class="form-outline col-12 col-lg-6 p-2">
+                <input type="text" class="form-control form-control-lg" formControlName="projectName" placeholder="Project Name">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectName']?.errors?.['required']"><p>Reqired</p></div>
+            </div>
+            <div class="form-outline col-12 col-lg-6 p-2">
+                <input type="text" class="form-control form-control-lg" formControlName="projectLocation" placeholder="Location">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectLocation']?.errors?.['required']"><p>Reqired</p></div>
+            </div>
+            <div class="form-outline col-12 p-2">
+                <textarea name="" class="form-control form-control-lg" formControlName="description" placeholder="Description"></textarea>
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['description']?.errors?.['required']"><p>Reqired</p></div>
+            </div>
+            <div class="form-outline col-12 col-lg-4 p-2">
+                <select name="" class="form-control form-control-lg" formControlName="projectType">
+                    <option value="" disabled selected>Project Type</option>
+                    <option value="for sale">For Sale</option>
+                    <option value="for show">For Show</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectType']?.errors?.['required']"><p>Reqired</p></div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit"
+                  class="btn btn-dark btn-block btn-lg gradient-custom-4">Update Project</button>
+              </div>
+        </form>
+    </div>    
+</div>

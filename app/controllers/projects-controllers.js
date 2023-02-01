@@ -6,8 +6,19 @@ const helper = require('../helpers/helpers')
 class Projects{
     static addProject = async (req , res)=>{
         try{
-            const projectData = await projectModel(req.body)
-            projectData.save()
+            console.log(req.body);
+            const projectData = projectModel(req.body)
+            let bulding = Array.apply(null, Array(req.body.numOfBuldings))
+            let floors = Array.apply(null, Array(req.body.numOfFloors))
+            projectData.buldings = bulding.map((b , i) => b ={
+                buldingNum: i+1,
+                floors: floors.map((f , i)=> f ={
+                    floorNum : i+1,
+                })
+            } )
+            if(req.files) req.files.forEach(f => projectData.projectImages.push(f.filename))
+            await projectData.save()
+            // projectData.save()
             helper.resHandler(res , 200 , true , projectData , "Project added successfully")
         }
         catch(err){
@@ -63,6 +74,7 @@ class Projects{
 
     static uploadImage = async (req, res)=>{
         try{
+        console.log(req.body.name);
         const projectData = await projectModel.findById(req.params.id)
         if(!projectData) throw new Error("project does not exist")
         req.files.forEach(f => projectData.projectImages.push(f.filename))

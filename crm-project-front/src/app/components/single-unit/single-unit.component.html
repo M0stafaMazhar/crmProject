@@ -1,1 +1,17 @@
-<p>single-unit works!</p>
+<div class="container-fluid p-3 text-center">
+    <div class="col-12 bg-light card">
+     <h1>Unit Number : {{unitData.unitNum}}</h1>
+     <h4>Unit Size : {{unitData.unitSize}}</h4>
+     <h4>unit Price : {{unitData.price}}</h4>
+     <p>{{unitData.unitDescription}}</p>
+     
+     <div class="row p-3">
+         <h3>Unit Images:</h3>
+         <div class="p-3 col-12 col-lg-4" *ngFor="let item of images , let i = index">
+             <div class="bg-dark text-light card p-2">
+                 <img src="{{baseUrl+item}}" class="col-12" height="300" width="400" alt="">
+             </div>
+         </div>
+     </div>
+     </div>    
+ </div>

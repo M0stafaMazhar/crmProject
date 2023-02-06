@@ -1,6 +1,7 @@
 const projectModel = require('../../db/models/projects-model')
 const unitModel = require('../../db/models/units-model')
 const helper = require('../helpers/helpers')
+const {unlink} = require('fs')
 
 
 class Projects{
@@ -85,10 +86,24 @@ class Projects{
         catch(err){
             helper.resHandler(res , 500 , false , err , err.message)
         }
+    }
 
-
-       
-
+    static addBulding = async (req, res) => {
+        try{
+            const projectData = await projectModel.findById(req.params.id)
+            if(!projectData) throw new Error("project not found")
+            let floors = Array.apply(null, Array(req.body.numOfFloors))
+            projectData.buldings.push({buldingNum:projectData.buldings.length +1 ,
+                floors: floors.map((f , i)=> f ={
+                    floorNum : i+1,
+                })})
+            
+                projectData.save()
+                helper.resHandler(res , 200 , true , projectData , "Bulding added")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
     }
 
     static getBulding =async(req, res)=>{
@@ -102,6 +117,77 @@ class Projects{
         catch(err){
             helper.resHandler(res , 500 , false , err , err.message)
         }
+    }
+
+    static deleteBulding = async (req, res) => {
+        try{
+            const projectData = await projectModel.findOne({"buldings._id" : req.params.id})
+            if(!projectData) throw new Error("Project not found")
+            projectData.buldings = projectData.buldings.filter(b => b._id.toString() != req.params.id)
+            projectData.save()
+
+            helper.resHandler(res , 200 , true , projectData , "bulding deleted")
+
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
+
+    static addBuldingImage = async (req, res) => {
+        try{
+            const projectData = await projectModel.findOne({"buldings._id" : req.params.id})
+            if(!projectData) throw new Error("Project not found")
+            const buldingIndex = projectData.buldings.findIndex(b => b._id.toString() == req.params.id)
+            req.files.forEach(f => projectData.buldings[buldingIndex].buldingImages.push(f.filename))
+            projectData.save()
+
+            helper.resHandler(res , 200 , true , projectData.buldings[buldingIndex] , "image deleted")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
+
+    static deleteBuldingImage = async (req,res)=>{
+        try{
+            const projectData = await projectModel.findOne({"buldings._id" : req.params.id})
+            if(!projectData) throw new Error("Project not found")
+            const buldingIndex = projectData.buldings.findIndex(b => b._id.toString() == req.params.id)
+
+            const filename = projectData.buldings[buldingIndex].buldingImages[req.params.index]
+            unlink("public/images/uploads/"+filename , (err)=>{
+                if(err) console.log(err);
+            })
+            projectData.buldings[buldingIndex].buldingImages.splice(req.params.index, 1)
+
+            projectData.save()
+
+            helper.resHandler(res , 200 , true , projectData.buldings[buldingIndex] , "image deleted")
+
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false , err , err.message)
+        }
+    }
+
+    static deleteImage = async(req, res)=>{
+        try{
+        const projectData = await projectModel.findById(req.params.id)
+        if(!projectData) throw new Error("Project not found")
+        const filename = projectData.projectImages[req.params.index]
+        unlink("public/images/uploads/"+filename , (err)=>{
+            if(err) console.log(err);
+        })
+        projectData.projectImages.splice(req.params.index , 1)
+        projectData.save()
+        helper.resHandler(res , 200 , true , projectData , "image deleted")
+        
+        }
+        catch(err) {
+        helper.resHandler(res , 500 , false , err , err.message)
+        }
+
     }
 }
 

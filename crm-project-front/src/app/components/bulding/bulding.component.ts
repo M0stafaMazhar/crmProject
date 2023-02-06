@@ -12,13 +12,14 @@ export class BuldingComponent {
   floorId: any
   buldingData: any
   images:any
+  imagesUp:any
   floors:any
   units:any
   baseUrl = "http://localhost:3000/public/images/uploads/"
   
   constructor(private activated : ActivatedRoute , private global : GlobalService){
     let buldingId = this.activated.snapshot.paramMap.get('buldingId')
-    this.global.getBulding(buldingId).subscribe((res)=>{
+    this.global.getBulding(buldingId).subscribe((res)=>{      
       this.buldingData = res.data;
       this.images = this.buldingData.buldingImages
       this.floors = this.buldingData.floors
@@ -57,4 +58,27 @@ export class BuldingComponent {
      })
 
   }
+
+  deleteImage(i:any){
+    this.global.deleteBuldingImage(this.buldingData._id , i).subscribe((res)=>{
+      this.images = res.data.buldingImages
+    })
+  }
+
+  imageUpload(ev:any){
+    this.imagesUp = [...ev.target.files]
+  }
+
+  addImages(){
+    let formData = new FormData()
+    this.imagesUp.forEach((im: any) => formData.append("avatar", im))
+    this.global.addBuldingImages(this.buldingData._id , formData).subscribe((res)=>{
+      this.images = res.data.buldingImages
+      
+    },(err)=>{
+      console.log(err);
+      
+    })
+  }
+  
 }

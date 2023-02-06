@@ -19,9 +19,10 @@ router.delete("/delete/:unitId" ,  /* auth , roleCheck , */ unitsControles.delet
 
 
 router.post("/sell/:unitId" ,  auth ,/* roleCheck , */ unitsControles.sellUnit)
-router.put("/payment/activate/:paymentId" , auth ,/* roleCheck , */  unitsControles.changePaymentStat)
+router.get("/payment/activate/:paymentId" , auth ,/* roleCheck , */  unitsControles.changePaymentStat)
 
 router.post('/add-image/:id', auth,/*roleCheck,*/upload.array("avatar") , unitsControles.uploadImage) //admin & superadmin)
+router.delete('/image/delete/:id/:index', auth, /*roleCheck,*/ unitsControles.deleteImage)
 
 
 

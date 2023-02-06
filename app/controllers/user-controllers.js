@@ -39,7 +39,11 @@ class UserControles{
 
     static myProfile = async(req , res)=>{
         try{
-            Helper.resHandler(res, 200, true, req.user,  "user's profile ")
+            await req.user.populate("mySales")
+            await req.user.populate("customerUnits")
+            Helper.resHandler(res, 200, true, {userData: req.user , 
+                                                userSales:req.user.mySales,
+                                                userUnits:req.user.customerUnits},  "user's profile ")
         }
         catch(err){
             Helper.resHandler(res, 500, false, err, err.message)
@@ -50,7 +54,12 @@ class UserControles{
         try{
             const userData = await userModel.findById(req.params.id)
             if(!userData) throw new Error("User not found")
-            Helper.resHandler(res, 200, true, userData,  "user profile")
+            
+            await userData.populate("mySales")
+            await userData.populate("customerUnits")
+            Helper.resHandler(res, 200, true, {userData: userData , 
+                                                userSales:userData.mySales,
+                                                userUnits:userData.customerUnits},  "user's profile ")
         }
         catch(err){
             Helper.resHandler(res, 500, false, err, err.message)
@@ -83,12 +92,11 @@ class UserControles{
 
     static editUser = async(req,res)=>{
         try{
-            const userType = req.url.split('/')[2]
-            const userData = await userModel.findOne({_id : req.params.id , "role.roleName" : userType})
+            const userData = await userModel.findById(req.params.id)
             if(!userData) throw new Error("User not found")
             Object.assign(userData, req.body)
             await userData.save()
-            Helper.resHandler(res, 200, true, userData,  userType+" edited successfully")
+            Helper.resHandler(res, 200, true, userData,  "user edited successfully")
         }
         catch(err){
             Helper.resHandler(res, 500, false, err, err.message)

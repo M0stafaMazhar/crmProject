@@ -8,16 +8,27 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./single-user.component.css']
 })
 export class SingleUserComponent {
-userData :any;
-constructor(private global:GlobalService ,private activated : ActivatedRoute ){
-  let userId = this.activated.snapshot.paramMap.get('userId')
-  this.global.showUser(userId).subscribe((res)=>{
-    this.userData = res.data
-  } , ()=>{
+  userData:any
+  userSales:any
+  userUnits:any
 
-  }, ()=>{
+  constructor(private activated : ActivatedRoute , private global:GlobalService){
+    let userId = this.activated.snapshot.paramMap.get('userId')
+    this.global.getUser(userId).subscribe((res)=>{
+      this.userData = res.data.userData
+      this.userSales = res.data.userSales
+      this.userUnits = res.data.userUnits
+    },(err)=>{
+      console.log(err);
+      
+    })
   }
-  )
-}
+
+  paymentStatus(paymentId:any , unitIndex:any){
+    this.global.changePaymentStat(paymentId).subscribe((res)=>{
+      this.userSales[unitIndex] = res.data
+    },(err)=>{
+    })
+  }
 }
 

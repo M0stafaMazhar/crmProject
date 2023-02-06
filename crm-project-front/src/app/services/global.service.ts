@@ -27,12 +27,20 @@ export class GlobalService {
     return this.http.get(this.baseUrl+"user/all")  
   }
 
-  showUser(id:any):Observable<any>{
-    return this.http.get(this.baseUrl+"user/show/"+id) 
+  getUser(id:any):Observable<any>{
+    return this.http.get(this.baseUrl+"user/show/"+id)  
+  }
+
+  updateUser( obj:any , id:any):Observable<any>{
+    return this.http.put(this.baseUrl+"user/edit/"+id , obj)
   }
 
   deleteUser(id:string):Observable<any>{
     return this.http.delete(this.baseUrl+"user/delete/"+id) 
+  }
+
+  getProfile():Observable<any>{
+    return this.http.get(this.baseUrl+"user/myprofile") 
   }
 
   getProjects():Observable<any>{
@@ -43,12 +51,16 @@ export class GlobalService {
     return this.http.post(this.baseUrl+"project/add-project" , obj)
   }
 
-  addProjectImages(obj:any):Observable<any>{
-    return this.http.post(this.baseUrl+"project/add-image/63d85c84eab0fab8411619f9" , obj)
+  addProjectImages(id:any , obj:any):Observable<any>{
+    return this.http.post(this.baseUrl+"project/add-image/"+id , obj)
   }
 
   deleteProject(id:any):Observable<any>{
     return this.http.delete(this.baseUrl+"project/delete/"+id)  
+  }
+
+  deleteProjecImage(id:any , i:any):Observable<any>{
+    return this.http.delete(this.baseUrl+"project/image/delete/"+id+"/"+i)  
   }
 
   singleProject(id:any):Observable<any>{
@@ -61,6 +73,14 @@ export class GlobalService {
 
   getBulding(id:any):Observable<any>{
     return this.http.get(this.baseUrl+"project/bulding/"+id) 
+  }
+
+  addBuldingImages(id:any , obj:any):Observable<any>{
+    return this.http.post(this.baseUrl+"project/bulding/image/"+id , obj)
+  }
+
+  deleteBuldingImage(id:any , i:any):Observable<any>{
+    return this.http.delete(this.baseUrl+"project/bulding/delete-image/"+id+"/"+i)  
   }
 
   getFloorUnits(id:any):Observable<any>{
@@ -82,6 +102,22 @@ export class GlobalService {
   deleteUnit(id:any):Observable<any>{
     return this.http.delete(this.baseUrl+"unit/delete/"+id) 
   }
+
+  deleteUnitImage(id:any , i:any):Observable<any>{
+    return this.http.delete(this.baseUrl+"unit/image/delete/"+id+"/"+i)  
+  }
+
+  addUnitImages(id:any , obj:any):Observable<any>{
+    return this.http.post(this.baseUrl+"unit/add-image/"+id , obj)
+  }
+
+  changePaymentStat(id:any):Observable<any>{
+    return this.http.get(this.baseUrl+"unit/payment/activate/"+id)
+  }
+
+ 
+
+
 
 
 

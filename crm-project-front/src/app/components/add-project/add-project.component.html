@@ -35,7 +35,7 @@
                 <div class="alert alert-danger" *ngIf="submitFlag && Data?.['projectType']?.errors?.['required']"><p>Reqired</p></div>
             </div>
             <div class="form-outline col-12 p-2">
-                <input type="file" class="form-control form-control-lg" placeholder="" multiple  formControlName="images" (change)="imageUpload($event)">
+                <input type="file" class="form-control form-control-lg" multiple  formControlName="images" (change)="imageUpload($event)">
                 <div class="alert alert-danger" *ngIf="submitFlag && Data?.['images']?.errors?.['required']"><p>Reqired</p></div>
             </div>
             <div class="d-flex justify-content-center">

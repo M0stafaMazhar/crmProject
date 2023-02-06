@@ -17,8 +17,17 @@
         <div class="p-3 col-12 col-lg-4" *ngFor="let item of images , let i = index">
             <div class="bg-dark text-light card p-2">
                 <img src="{{baseUrl+item}}" class="col-12" height="300" width="400" alt="">
+                <div class="d-flex justify-content-center p-3"> <button class="btn btn-danger" (click)="deleteImage(i)">Delete</button> </div>
             </div>
         </div>
+        <div class="d-flex justify-content-center">
+            <div class="col-12 col-lg-6 p-1">
+            <input type="file" multiple class="form-control form-control-lg" (change)="imageUpload($event)">
+        </div>
+        <div class="col-12 col-lg-2 p-2">
+            <button class="btn btn-dark col-12" (click)="addImages()">Add Images</button>
+        </div>
+         </div>
     </div>
     </div>    
 </div>

@@ -20,7 +20,7 @@
             <div class="form-outline col-12 col-lg-6 p-2">
                 <input type="text" class="form-control form-control-lg" formControlName="price" placeholder="Price">
                 <div class="alert alert-danger" *ngIf="submitFlag && Data?.['price']?.errors?.['required']">Required</div>
-                <div class="alert alert-danger" *ngIf="(submitFlag || Data?.['price']?.dirty) && Data?.['price']?.errors?.['pattern']">Required</div>
+                <div class="alert alert-danger" *ngIf="(submitFlag || Data?.['price']?.dirty) && Data?.['price']?.errors?.['pattern']">Please Enter a Valid Numder</div>
             </div>
             <div class="form-outline col-12 p-2">
                 <input type="file" class="form-control form-control-lg" formControlName="images" placeholder="" multiple (change)="imageUpload($event)">

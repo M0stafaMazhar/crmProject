@@ -1,6 +1,7 @@
 const helper = require('../helpers/helpers');
 const unitModel = require('../../db/models/units-model');
 const projectModel = require('../../db/models/projects-model');
+const {unlink} = require('fs')
 
 class Unit{
     static add = async (req,res)=>{
@@ -133,6 +134,25 @@ class Unit{
         catch(err){
             helper.resHandler(res , 500 , false , err , err.message)
         }
+    }
+
+    static deleteImage = async(req, res)=>{
+        try{
+        const unitData = await unitModel.findById(req.params.id)
+        if(!unitData) throw new Error("Project not found")
+        const filename = unitData.unitImages[req.params.index]
+        unlink("public/images/uploads/"+filename , (err)=>{
+            if(err) console.log(err);
+        })
+        unitData.unitImages.splice(req.params.index , 1)
+        unitData.save()
+        helper.resHandler(res , 200 , true , unitData , "image deleted")
+        
+        }
+        catch(err) {
+        helper.resHandler(res , 500 , false , err , err.message)
+        }
+
     }
 }
 

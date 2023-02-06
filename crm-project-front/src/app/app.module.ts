@@ -27,6 +27,9 @@ import { AddUnitComponent } from './components/add-unit/add-unit.component';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { UpdateUnitComponent } from './components/update-unit/update-unit.component';
 import { UpdateBuldingComponent } from './components/update-bulding/update-bulding.component';
+import { ErrorComponent } from './components/error/error.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { SellUnitComponent } from './components/sell-unit/sell-unit.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { UpdateBuldingComponent } from './components/update-bulding/update-buldi
     AddUnitComponent,
     UpdateProjectComponent,
     UpdateUnitComponent,
-    UpdateBuldingComponent
+    UpdateBuldingComponent,
+    ErrorComponent,
+    UpdateUserComponent,
+    SellUnitComponent
   ],
   imports: [
     BrowserModule,

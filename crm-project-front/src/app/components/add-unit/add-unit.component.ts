@@ -30,8 +30,8 @@ export class AddUnitComponent {
   unitForm = new FormGroup({
     unitNum: new FormControl("" , [Validators.required]),
     unitDescription: new FormControl("" , [Validators.required]),
-    unitSize: new FormControl("" , [Validators.required]),
-    price: new FormControl("" , [Validators.required]),
+    unitSize: new FormControl("" , [Validators.required , Validators.pattern("^[0-9]{2,5}$")]),
+    price: new FormControl("" , [Validators.required , Validators.pattern("^[0-9]{6,}$")]),
     images:new FormControl("" , [Validators.required])
   })
 

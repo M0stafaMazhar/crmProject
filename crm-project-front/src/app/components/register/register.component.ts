@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
+  userRole = localStorage.getItem('role');
+
+
 
   roles:any
   successFlag = false
@@ -22,6 +25,7 @@ export class RegisterComponent {
     roleName: '',
     roleId: ''
   }
+  userType = "customer"
   roleIndex :any
 
   userData:Register={
@@ -33,7 +37,8 @@ export class RegisterComponent {
     role: {
       roleName:'',
       roleId:''
-    }
+    },
+    userType:''
   }
 
 
@@ -44,7 +49,6 @@ export class RegisterComponent {
     password: new FormControl("" , [Validators.required , Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")]),
     // rePassword: new FormControl("" , [Validators.required]),
     phone: new FormControl("" , [Validators.required , Validators.pattern("^(01)[0 | 1 | 2 | 5][0-9]{8}$")]),
-    role: new FormControl("" , [Validators.required]),
   })
 
   get Data() {return this.registerForm.controls}
@@ -52,6 +56,8 @@ export class RegisterComponent {
   constructor(private router: Router, private global:GlobalService){
     this.global.getRoles().subscribe((res)=>{
       this.roles = res.data
+      this.role.roleName = this.roles[0].roleName
+      this.role.roleId = this.roles[0]._id 
     } , ()=>{
   
     }, ()=>{
@@ -65,6 +71,10 @@ export class RegisterComponent {
     this.role.roleId = this.roles[ev.target.value]._id  
   }
 
+  selectedUserType(ev: any){
+    this.userType = ev.target.value
+  }
+
   handleSubmit() {
     this.submitFlag = true;
     
@@ -74,7 +84,8 @@ export class RegisterComponent {
       userName: this.Data.userName.value,
       password: this.Data.password.value,
       phone: this.Data.phone.value,
-      role: this.role
+      role: this.role,
+      userType:this.userType
     }
 
     if(this.registerForm.valid){

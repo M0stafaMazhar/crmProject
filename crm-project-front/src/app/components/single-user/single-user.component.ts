@@ -11,6 +11,7 @@ export class SingleUserComponent {
   userData:any
   userSales:any
   userUnits:any
+  userType:any
 
   constructor(private activated : ActivatedRoute , private global:GlobalService){
     let userId = this.activated.snapshot.paramMap.get('userId')
@@ -18,6 +19,7 @@ export class SingleUserComponent {
       this.userData = res.data.userData
       this.userSales = res.data.userSales
       this.userUnits = res.data.userUnits
+      this.userType = res.data.userType
     },(err)=>{
       console.log(err);
       
@@ -26,7 +28,7 @@ export class SingleUserComponent {
 
   paymentStatus(paymentId:any , unitIndex:any){
     this.global.changePaymentStat(paymentId).subscribe((res)=>{
-      this.userSales[unitIndex] = res.data
+      this.userUnits[unitIndex] = res.data
     },(err)=>{
     })
   }

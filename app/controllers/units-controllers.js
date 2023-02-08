@@ -2,6 +2,7 @@ const helper = require('../helpers/helpers');
 const unitModel = require('../../db/models/units-model');
 const projectModel = require('../../db/models/projects-model');
 const {unlink} = require('fs')
+const invoiceCreator = require('./middleware/invoice-creator')
 
 class Unit{
     static add = async (req,res)=>{
@@ -76,7 +77,7 @@ class Unit{
 
             const paymentValue = (unitData.price - unitData.downPayment) / req.body.numOfPayments
 
-            let payments = Array.apply(null, Array(req.body.numOfPayments))
+            let payments = Array.apply(null, Array(Number(req.body.numOfPayments)))
 
             unitData.payments =  payments.map( (p , index) => p = {paymentNum : index+1,
                                                                     paymentValue : paymentValue })
@@ -153,6 +154,25 @@ class Unit{
         helper.resHandler(res , 500 , false , err , err.message)
         }
 
+    }
+
+    static invoice = async (req , res)=>{
+        try{
+            const unitData = await unitModel.findOne({"payments._id" : req.params.paymentId})
+            if(!unitData)throw new Error("No such unit")
+            // if(req.user._id != unitData.customerId)throw new Error("You cannot download this invoice")
+
+            const paymentIndex = unitData.payments.findIndex(p => p._id.toString() == req.params.paymentId)
+
+            invoiceCreator.create(res , req.user , unitData.payments[paymentIndex] , unitData)
+            
+            
+            
+
+        }
+        catch(err) {
+        helper.resHandler(res , 500 , false , err , err.message)
+        }
     }
 }
 

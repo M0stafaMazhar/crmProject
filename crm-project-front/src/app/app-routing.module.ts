@@ -19,25 +19,28 @@ import { UpdateProjectComponent } from './components/update-project/update-proje
 import { UpdateUnitComponent } from './components/update-unit/update-unit.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UsersComponent } from './components/users/users.component';
+import { EmployeeGuard } from './guards/employee.guard';
+import { LogedinGuard } from './guards/logedin.guard';
+import { NotLogedinGuard } from './guards/not-logedin.guard';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
-  {path:"login" , component:LoginComponent},
-  {path:"register" , component:RegisterComponent},
-  {path:"profile" , component:ProfileComponent},
+  {path:"login" , component:LoginComponent , canActivate:[LogedinGuard]},
+  {path:"register" , component:RegisterComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"profile" , component:ProfileComponent, canActivate:[NotLogedinGuard]},
   {path:"projects" , component:ProjectsComponent},
   {path:"projects/:projectId" , component:SingleProjectsComponent},
   {path:"roles" , component:RolesComponent},
   {path:"bulding/:buldingId" , component:BuldingComponent},
-  {path:"users", component:UsersComponent},
-  {path:"users/:userId" , component:SingleUserComponent},
-  {path:"addproject" ,component:AddProjectComponent},
-  {path:"units/add/:floorId" , component:AddUnitComponent},
-  {path:"units/update/:unitId" , component:UpdateUnitComponent},
+  {path:"users", component:UsersComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"users/:userId" , component:SingleUserComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"addproject" ,component:AddProjectComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"units/add/:floorId" , component:AddUnitComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"units/update/:unitId" , component:UpdateUnitComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
   {path:"units/:unitId" , component:SingleUnitComponent},
-  {path:"projects/update/:projectId" , component:UpdateProjectComponent},
-  {path:"users/update/:userId" , component:UpdateUserComponent},
-  {path:"units/sell/:unitId" , component:SellUnitComponent},
+  {path:"projects/update/:projectId" , component:UpdateProjectComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"users/update/:userId" , component:UpdateUserComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
+  {path:"units/sell/:unitId" , component:SellUnitComponent , canActivate:[EmployeeGuard]}, 
 
 
 

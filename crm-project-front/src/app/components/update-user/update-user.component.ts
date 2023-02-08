@@ -12,6 +12,10 @@ import { EditUser } from 'src/app/interfaces/edit-user';
   styleUrls: ['./update-user.component.css']
 })
 export class UpdateUserComponent {
+  userRole = localStorage.getItem('role');
+
+
+
 
   roles:any
   successFlag = false
@@ -44,7 +48,6 @@ export class UpdateUserComponent {
     userName: new FormControl("" , [Validators.required , Validators.pattern("^[2 | 3][0-9]{13}$")]),
     // rePassword: new FormControl("" , [Validators.required]),
     phone: new FormControl("" , [Validators.required , Validators.pattern("^(01)[0 | 1 | 2 | 5][0-9]{8}$")]),
-    role: new FormControl("" , [Validators.required]),
   })
 
   get Data() {return this.registerForm.controls}

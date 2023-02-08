@@ -13,7 +13,6 @@ export class LoginComponent {
   errorFlag = false;
   errMessage = '';
   submitFlag = false;
-  token = localStorage.getItem('token');
 
   userData : Login ={
     userName:'',
@@ -26,9 +25,6 @@ export class LoginComponent {
   })
 
   constructor(private router: Router , private global:GlobalService){
-    if(this.token){
-      this.router.navigate([''])
-    }
   }
 
   get Data() {return this.loginForm.controls}
@@ -41,12 +37,12 @@ export class LoginComponent {
     if(this.loginForm.valid){
       this.global.login(this.userData).subscribe((res)=>{
         localStorage.setItem('token', res.data.token);
-        console.log(res.data.token);
-        console.log(res.data.userData.role.rolename);
         
-        
-        localStorage.setItem('role', res.data.userData.role.rolename);
-        this.router.navigate([''])
+        localStorage.setItem('type', res.data.userData.userType);
+
+        localStorage.setItem('role', res.data.userData.role.roleName);
+        window.location.href = '/profile'
+      // this.router.navigateByUrl("")
         
       } , (err)=>{
         this.errorFlag = true;

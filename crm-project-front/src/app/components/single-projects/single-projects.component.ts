@@ -14,6 +14,8 @@ export class SingleProjectsComponent {
   imagesUp:any
   baseUrl = "http://localhost:3000/public/images/uploads/"
 
+  userType = localStorage.getItem("type")
+
   constructor(private activated : ActivatedRoute , private global : GlobalService){
     let projectId = this.activated.snapshot.paramMap.get('projectId')
     this.global.singleProject(projectId).subscribe(data=>{

@@ -16,6 +16,8 @@ export class BuldingComponent {
   floors:any
   units:any
   baseUrl = "http://localhost:3000/public/images/uploads/"
+
+  userType = localStorage.getItem("type")
   
   constructor(private activated : ActivatedRoute , private global : GlobalService){
     let buldingId = this.activated.snapshot.paramMap.get('buldingId')

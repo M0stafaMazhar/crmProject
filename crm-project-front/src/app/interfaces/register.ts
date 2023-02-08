@@ -5,5 +5,6 @@ export interface Register {
     password: any;
     phone: any;
     role: any;
+    userType: any;
 
 }

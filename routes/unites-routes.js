@@ -24,6 +24,8 @@ router.get("/payment/activate/:paymentId" , auth ,/* roleCheck , */  unitsContro
 router.post('/add-image/:id', auth,/*roleCheck,*/upload.array("avatar") , unitsControles.uploadImage) //admin & superadmin)
 router.delete('/image/delete/:id/:index', auth, /*roleCheck,*/ unitsControles.deleteImage)
 
+router.get('/payment/invoice/:paymentId', auth, /*roleCheck,*/ unitsControles.invoice)
+
 
 
 module.exports = router;

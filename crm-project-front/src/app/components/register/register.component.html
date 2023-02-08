@@ -40,12 +40,19 @@
                   <div class="alert alert-danger" *ngIf="(Data?.['phone']?.dirty || submitFlag) && Data?.['phone']?.errors?.['pattern']"><p>Invalid Phone Number</p></div>
                 </div>
 
-                <div class="form-outline my-2">
-                    <select class="form-control form-control-lg" (change)="selectedRole($event)" formControlName="role">
+                <div class="form-outline my-2 col-12 col-lg-6" *ngIf="userRole == 'employee'">
+                    <select class="form-control form-control-lg" (change)="selectedRole($event)">
                       <option value="" disabled selected>Select Role</option>
                         <option [value]="i" *ngFor="let item of roles , let i = index" >{{item.roleName}}</option>
                       </select>
-                      <div class="alert alert-danger" *ngIf="submitFlag && Data?.['role']?.errors?.['required']"><p>Reqired</p></div>
+                  </div>
+
+                  <div class="form-outline my-2 col-12 col-lg-6" *ngIf="userRole == 'play'">
+                    <select class="form-control form-control-lg" (change)="selectedUserType($event)">
+                      <option value="" disabled selected>User Type</option>
+                        <option value="customer">Customer</option>
+                        <option value="employee">Employee</option>
+                      </select>
                   </div>
 
                 <div class="form-outline mb-4 col-12 col-md-6 col-lg-6 my-2">

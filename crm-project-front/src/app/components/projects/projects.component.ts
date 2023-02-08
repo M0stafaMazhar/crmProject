@@ -8,6 +8,7 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class ProjectsComponent {
 projects :any;
+userType = localStorage.getItem('type')
 baseUrl = "http://localhost:3000/public/images/uploads/"
 constructor(private global:GlobalService){
   this.global.getProjects().subscribe((res)=>{

@@ -5,7 +5,7 @@
         <h6>National ID : {{userData.userName}}</h6>
         <h6>Phone : : {{userData.phone}}</h6>
         <hr>
-        <div>
+        <div *ngIf="userType == 'employee'">
             <h5><i class="bi bi-coin"></i> My Sales :</h5>
             <div class="d-flex flex-row p-2 col-12 col-lg-3">
                 <div class="card p-2 col-12 text-center" *ngFor="let item of userSales , let i = index">
@@ -13,15 +13,15 @@
                     <p>Downpayment : {{item.downPayment}}</p>
                 </div>
             </div>
+            <hr>
         </div>
-        <hr>
         <div>
             <h5><i class="bi bi-house-fill"></i> My Units :</h5>
-            <div class="flex-column p-2">
+            <div class="flex-column p-2 col-12">
                 <div class="card p-2" *ngFor="let item of userUnits , let i = index">
                     <p>Unit Number : {{item.unitNum}}</p>
                     <p>Downpayment : {{item.downPayment}} EGP</p>
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row col-12">
                         <div class="p-2 col-12 col-lg-2 text-center" *ngFor="let payment of item.payments">
                             <div class="card alert alert-dark">
                                 <p>Payment no : {{payment.paymentNum}}</p>
@@ -30,7 +30,7 @@
                                 <p *ngIf="!payment.paymentStat">Status : Not paid</p>
                                 <div class="justify-content-center col-12">
                                     <div class="col-12 p-2">
-                                        <a class="btn btn-dark col-12">Invoice</a>
+                                        <a class="btn btn-dark col-12" (click)="invoice(payment._id)">Invoice</a>
                                     </div>
                                      </div>
                             </div>

@@ -9,7 +9,7 @@
                 </select>
                 <div class="alert alert-danger" *ngIf="errFlag">No Units Found!</div>
             </div>
-            <div class="col-12 col-lg-2 p-2">
+            <div class="col-12 col-lg-2 p-2" *ngIf="userType == 'employee'">
                 <a class="btn btn-primary" routerLink="/units/add/{{floorId}}">Add Unit</a>
             </div>
         </div>
@@ -20,7 +20,7 @@
                <a routerLink="/units/{{item._id}}"> <img src="{{baseUrl+item.unitImages[0]}}" class="col-12" height="300" alt=""> </a>
                 <h4>Unit no : {{item.unitNum}}</h4>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="userType == 'employee'">
                 <div class="col-12 col-lg-4 p-2"><a class="btn btn-success col-12" routerLink="/units/update/{{item._id}}">Edit</a></div>
                 <div class="col-12 col-lg-4 p-2"><a class="btn btn-danger col-12" (click)="deleteUnit(item._id , i)">Delete</a></div>
             </div>
@@ -31,10 +31,10 @@
         <div class="p-3 col-12 col-lg-4" *ngFor="let item of images , let i = index">
             <div class="bg-dark text-light card p-2">
                 <img src="{{baseUrl+item}}" class="col-12" height="300" width="400" alt="">
-                <div class="d-flex justify-content-center p-3"> <button class="btn btn-danger" (click)="deleteImage(i)">Delete</button> </div>
+                <div class="d-flex justify-content-center p-3" *ngIf="userType == 'employee'"> <button class="btn btn-danger" (click)="deleteImage(i)">Delete</button> </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" *ngIf="userType == 'employee'">
            <div class="col-12 col-lg-6 p-1">
            <input type="file" multiple class="form-control form-control-lg" (change)="imageUpload($event)">
        </div>

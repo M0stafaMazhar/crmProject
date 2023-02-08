@@ -1,22 +1,25 @@
 <div class="ontainer p-3 d-flex justify-content-center">
     <div class="card bg-light col-12 col-lg-6 p-3">
         <h2 class="text-uppercase text-center mb-5">Sell Unit</h2>
-        <div class="alert alert-danger text-center" ></div>
-        <div class="alert alert-success text-center"></div>
-        <form class="row" >
+        <div class="alert alert-danger text-center" *ngIf="errFlag"><h6>{{errMessage}}</h6></div>
+        <div class="alert alert-success text-center" *ngIf="successFlag"><h6>{{successMessage}}</h6></div>
+        <form class="row" [formGroup]="sellUnitForm" (ngSubmit)="onSubmit()">
             <div class="form-outline col-12 p-2">
-                <input type="text" class="form-control form-control-lg" formControlName="unitNum" placeholder="User">
-                <div class="alert alert-danger" >Required</div>
+            <select class="form-control form-control-lg" formControlName="customerId" (change)="selectedUser($event)" >
+                <option>Select User</option>
+                <option [value]="item._id" *ngFor="let item of usersData">{{item.fName+" "+item.lName+", ID : "+item.userName}}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="submitFlag && Data?.['customerId']?.errors?.['required']">Required</div>
             </div>
             <div class="form-outline col-12 col-lg-6 p-2">
-                <input type="text" class="form-control form-control-lg" formControlName="unitSize" placeholder="Down Payment">
-                <div class="alert alert-danger" >Required</div>
-                <div class="alert alert-danger" >Please Enter a Valid Numder</div>
+                <input type="text" class="form-control form-control-lg" formControlName="downPayment" placeholder="Down Payment">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['downPayment']?.errors?.['required']">Required</div>
+                <div class="alert alert-danger" *ngIf="(submitFlag || Data?.['downPayment']?.dirty)&& Data?.['downPayment']?.errors?.['pattern']">Please Enter a Valid Numder</div>
             </div>
             <div class="form-outline col-12 col-lg-6 p-2">
-                <input type="text" class="form-control form-control-lg" formControlName="price" placeholder="Number of payments">
-                <div class="alert alert-danger"> </div>
-                <div class="alert alert-danger" >Please Enter a Valid Numder</div>
+                <input type="text" class="form-control form-control-lg" formControlName="numOfPayments" placeholder="Number of payments">
+                <div class="alert alert-danger" *ngIf="submitFlag && Data?.['numOfPayments']?.errors?.['required']">Required</div>
+                <div class="alert alert-danger" *ngIf="(submitFlag || Data?.['numOfPayments']?.dirty)&& Data?.['numOfPayments']?.errors?.['pattern']">Please Enter a Valid Numder</div>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit"

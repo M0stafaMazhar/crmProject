@@ -3,10 +3,10 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/profile">Profile</a>
+          <a class="nav-link" routerLink="/profile" *ngIf="token">Profile</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" routerLink="">Home</a>
@@ -15,19 +15,16 @@
           <a class="nav-link" routerLink="/projects">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/users">Users</a>
+          <a class="nav-link" routerLink="/users" *ngIf="userType == 'employee'">Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register">Add User</a>
+          <a class="nav-link" routerLink="/register" *ngIf="userType == 'employee'">Add User</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register"></a>
+          <a class="btn btn-outline-light btn-floating mx-2" routerLink="/login" *ngIf="!token">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login" *ngIf="!token">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="" *ngIf="!token">Logout</a>
+          <a class="btn btn-outline-light btn-floating mx-2" (click)="logout()" *ngIf="token">Logout</a>
         </li>
       </ul>
     </div>

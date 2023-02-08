@@ -115,6 +115,18 @@ export class GlobalService {
     return this.http.get(this.baseUrl+"unit/payment/activate/"+id)
   }
 
+  sellUnit(obj:any , id:any):Observable<any>{
+    return this.http.post(this.baseUrl+"unit/sell/"+id , obj)
+  }
+
+  logOut():Observable<any>{
+    return this.http.get(this.baseUrl+"user/logout")
+  }
+
+  invoices(id:any):Observable<any>{
+    return this.http.get(this.baseUrl+"unit/payment/invoice/"+id , { responseType: 'blob' })
+  }
+
  
 
 

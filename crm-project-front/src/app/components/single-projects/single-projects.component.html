@@ -1,26 +1,28 @@
 <div class="container-fluid p-3 text-center">
-   <div class="col-12 bg-light card">
+   <div class="col-12 bg-light">
     <h1>{{projectData.projectName}}</h1>
-    <h4>{{projectData.projectLocation}}</h4>
+    <h4><i class="bi bi-geo-alt-fill"></i>{{projectData.projectLocation}}</h4>
     <p>{{projectData.description}}</p>
     <div class="row p-3">
-        <h3>Buldings:</h3>
-        <div class="p-3 col-12 col-lg-4" *ngFor="let item of buldingsData , let i = index">
-            <div class="bg-dark text-light card p-3">
+        <h3><i class="bi bi-building-fill"></i>Buldings:</h3>
+        <div class="p-1 col-12 col-lg-4" *ngFor="let item of buldingsData , let i = index">
+            
                 <a routerLink="/bulding/{{item._id}}"><img src="{{baseUrl+item.buldingImages[0]}}" class="col-12" height="300" width="400" alt=""></a>
+                <div class="p-2 bg-dark text-light">
                 <h4>Bulding : {{item.buldingNum}}</h4>
             </div>
+            
         </div>
 
     <div class="row p-3">
         <h3>Project Images:</h3>
-        <div class="p-3 col-12 col-lg-4" *ngFor="let item of images , let i = index">
-            <div class="bg-dark text-light card p-2">
+        <div class="p-1 col-12 col-lg-4" *ngFor="let item of images , let i = index">
+            
                 <img src="{{baseUrl+item}}" class="col-12" height="300" width="400" alt="">
                 <div class="d-flex justify-content-center p-3" *ngIf="userType == 'employee'"> <button class="btn btn-danger" (click)="deleteImage(i)">Delete</button> </div>
-            </div>
+            
         </div>
-        <div class="d-flex justify-content-center" *ngIf="userType == 'employee'">
+        <div *ngIf="userType == 'employee'">
             <div class="col-12 col-lg-6 p-1">
             <input type="file" multiple class="form-control form-control-lg" (change)="imageUpload($event)">
         </div>

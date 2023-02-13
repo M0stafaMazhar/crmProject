@@ -54,16 +54,17 @@ export class UpdateUserComponent {
 
   constructor(private activated : ActivatedRoute , private router: Router, private global:GlobalService){
     this.userId = this.activated.snapshot.paramMap.get('userId')
+
     this.global.getRoles().subscribe((res)=>{
-      this.roles = res.data
+    this.roles = res.data
     } , ()=>{
   
     }, ()=>{
       this.global.getUser(this.userId).subscribe((res)=>{
-        this.registerForm.patchValue(res.data)
-        this.role = res.data.role
+        this.registerForm.patchValue(res.data.userData)
+        
       },(err)=>{
-
+  
       })
     }
     )

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-12">
-  <a class="navbar-brand mx-2">Company Name</a>
+  <a class="navbar-brand mx-2"><h3><i class="bi bi-buildings"></i><i class="bi bi-buildings"></i></h3></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,7 +18,7 @@
           <a class="nav-link" routerLink="/users" *ngIf="userType == 'employee'">Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register" *ngIf="userType == 'employee'">Add User</a>
+          <a class="nav-link" routerLink="/roles" *ngIf="userType == 'employee'">Roles</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-light btn-floating mx-2" routerLink="/login" *ngIf="!token">Login</a>

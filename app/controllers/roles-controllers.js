@@ -1,5 +1,7 @@
 const helper = require('../helpers/helpers')
 const roleModel = require('../../db/models/roles-model')
+const fs = require('fs')
+const urls = require('../../db/urls.json')
 
 
 class Role{
@@ -55,6 +57,15 @@ class Role{
             const roleData = await roleModel.findByIdAndDelete(req.params.roleId);
             if(!roleData) throw new Error("Role not found");
             helper.resHandler(res , 200 , true, {} , "role removed successfully")
+        }
+        catch(err){
+            helper.resHandler(res , 500 , false, err , err.message)
+        }
+    }
+
+    static urls = async(req,res)=>{
+        try{
+            helper.resHandler(res , 200 , true, {urls} , "role removed successfully")
         }
         catch(err){
             helper.resHandler(res , 500 , false, err , err.message)

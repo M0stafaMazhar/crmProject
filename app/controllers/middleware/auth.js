@@ -25,14 +25,15 @@ const auth = async (req, res, next) => {
 
 const roleCheck = async (req, res, next) => {
     try{
-        const role = await roleModel.findById(req.user.roleId)
+        const role = await roleModel.findById(req.user.role.roleId)
         if(!role) throw new Error("undefined role")
         console.log(req.url.split("/")[1]);
 
         if(!role.urls.some( r => r.url == req.url.split("/")[1] 
             && r.method == req.method 
-            && (!r.parrams || r.params.includes(Object.keys(req.params))) 
-            && (!r.query || r.query.includes(Object.keys(req.query))) )) throw new Error("forbidden url")
+            && (!r.parrams || r.params.some( p => req.params.includes(p))) 
+            // && (!r.query || r.query.includes(Object.keys(req.query))) 
+            )) throw new Error("forbidden url")
         req.role = role
         next()
     }

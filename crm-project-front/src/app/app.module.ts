@@ -30,6 +30,7 @@ import { UpdateBuldingComponent } from './components/update-bulding/update-buldi
 import { ErrorComponent } from './components/error/error.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { SellUnitComponent } from './components/sell-unit/sell-unit.component';
+import { AddRoleComponent } from './components/add-role/add-role.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { SellUnitComponent } from './components/sell-unit/sell-unit.component';
     UpdateBuldingComponent,
     ErrorComponent,
     UpdateUserComponent,
-    SellUnitComponent
+    SellUnitComponent,
+    AddRoleComponent
   ],
   imports: [
     BrowserModule,

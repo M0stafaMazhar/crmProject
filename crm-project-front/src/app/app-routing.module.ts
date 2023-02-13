@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProjectComponent } from './components/add-project/add-project.component';
+import { AddRoleComponent } from './components/add-role/add-role.component';
 import { AddUnitComponent } from './components/add-unit/add-unit.component';
 import { BuldingComponent } from './components/bulding/bulding.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path:"projects/update/:projectId" , component:UpdateProjectComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
   {path:"users/update/:userId" , component:UpdateUserComponent , canActivate:[NotLogedinGuard , EmployeeGuard]},
   {path:"units/sell/:unitId" , component:SellUnitComponent , canActivate:[EmployeeGuard]}, 
+  {path:"add/role" , component:AddRoleComponent},
 
 
 

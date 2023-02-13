@@ -1,0 +1,78 @@
+[{
+    "url":"add-user",
+    "method": "POST"
+},
+{
+    "url":"show-user",
+    "method":"GET",
+    "params": ["id"]
+},
+{
+    "url":"show-all-users",
+    "method":"GET"
+},
+{
+    "url":"edit-user",
+    "method":"PUT",
+    "params":["id"]
+},
+{   "url":"delete-user", 
+    "method":"DELETE",
+    "params":["id"]
+},
+{
+    "url":"add-project",
+    "method": "POST"
+},
+{
+    "url":"edit-project",
+    "method":"PUT",
+    "params":["id"]
+},
+{   "url":"delete-project", 
+    "method":"DELETE",
+    "params":["id"]
+},
+{
+    "url":"add-bulding",
+    "method":"POST",
+    "params":["id"]
+},
+{   "url":"delete-bulding", 
+    "method":"DELETE",
+    "params":["id"]
+},
+{
+    "url":"add-images",
+    "method":"PUT",
+    "params":["id"]
+},
+{   "url":"delete-images", 
+    "method":"DELETE",
+    "params":["id" , "index"]
+},
+{
+    "url":"add-unit",
+    "method": "POST",
+    "params":["floorId"]
+},
+
+{
+    "url":"edit-unit",
+    "method":"PUT",
+    "params":["unitId"]
+},
+{   "url":"delete-unit", 
+    "method":"DELETE",
+    "params":["unitId"]
+},
+{
+    "url":"sell-unit",
+    "method":"POST",
+    "params":["unitId"]
+},
+{   "url":"activate-payment", 
+    "method":"GET",
+    "params":["paymentId"]
+}
+]

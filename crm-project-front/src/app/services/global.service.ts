@@ -12,11 +12,11 @@ export class GlobalService {
   constructor(private http:HttpClient) { }
   
   getRoles():Observable<any>{
-    return this.http.get(this.baseUrl+"role/show-all")  
+    return this.http.get(this.baseUrl+"role/show-roles")  
   }
   
   register(obj:Register):Observable<any>{
-    return this.http.post(this.baseUrl+"user/register" , obj)  
+    return this.http.post(this.baseUrl+"user/add-user" , obj)  
   }
   
   login(obj:Login):Observable<any>{
@@ -24,19 +24,19 @@ export class GlobalService {
   }
 
   getUsers():Observable<any>{
-    return this.http.get(this.baseUrl+"user/all")  
+    return this.http.get(this.baseUrl+"user/show-all-users")  
   }
 
   getUser(id:any):Observable<any>{
-    return this.http.get(this.baseUrl+"user/show/"+id)  
+    return this.http.get(this.baseUrl+"user/show-user/"+id)  
   }
 
   updateUser( obj:any , id:any):Observable<any>{
-    return this.http.put(this.baseUrl+"user/edit/"+id , obj)
+    return this.http.put(this.baseUrl+"user/edit-user/"+id , obj)
   }
 
   deleteUser(id:string):Observable<any>{
-    return this.http.delete(this.baseUrl+"user/delete/"+id) 
+    return this.http.delete(this.baseUrl+"user/delete-user/"+id) 
   }
 
   getProfile():Observable<any>{
@@ -44,7 +44,7 @@ export class GlobalService {
   }
 
   getProjects():Observable<any>{
-    return this.http.get(this.baseUrl+"project/show/all")
+    return this.http.get(this.baseUrl+"project/show-all-projects")
   }
 
   addProject(obj:any):Observable<any>{
@@ -52,23 +52,23 @@ export class GlobalService {
   }
 
   addProjectImages(id:any , obj:any):Observable<any>{
-    return this.http.post(this.baseUrl+"project/add-image/"+id , obj)
+    return this.http.post(this.baseUrl+"project/add-images/"+id , obj)
   }
 
   deleteProject(id:any):Observable<any>{
-    return this.http.delete(this.baseUrl+"project/delete/"+id)  
+    return this.http.delete(this.baseUrl+"project/delete-project/"+id)  
   }
 
   deleteProjecImage(id:any , i:any):Observable<any>{
-    return this.http.delete(this.baseUrl+"project/image/delete/"+id+"/"+i)  
+    return this.http.delete(this.baseUrl+"project/delete-images/"+id+"/"+i)  
   }
 
   singleProject(id:any):Observable<any>{
-    return this.http.get(this.baseUrl+"project/show/"+id)  
+    return this.http.get(this.baseUrl+"project/show-project/"+id)  
   }
 
   updateProject(obj:any , id:any):Observable<any>{
-    return this.http.put(this.baseUrl+"project/update/"+id , obj)  
+    return this.http.put(this.baseUrl+"project/edit-project/"+id , obj)  
   }
 
   getBulding(id:any):Observable<any>{
@@ -76,11 +76,11 @@ export class GlobalService {
   }
 
   addBuldingImages(id:any , obj:any):Observable<any>{
-    return this.http.post(this.baseUrl+"project/bulding/image/"+id , obj)
+    return this.http.post(this.baseUrl+"project/add-images/bulding/"+id , obj)
   }
 
   deleteBuldingImage(id:any , i:any):Observable<any>{
-    return this.http.delete(this.baseUrl+"project/bulding/delete-image/"+id+"/"+i)  
+    return this.http.delete(this.baseUrl+"project/delete-images/bulding/"+id+"/"+i)  
   }
 
   getFloorUnits(id:any):Observable<any>{
@@ -92,31 +92,31 @@ export class GlobalService {
   }
 
   addUnit(obj:any , id:any):Observable<any>{
-    return this.http.post(this.baseUrl+"unit/add/"+id , obj ) 
+    return this.http.post(this.baseUrl+"unit/add-unit/"+id , obj ) 
   }
 
   updateUnit(obj:any , id:any):Observable<any>{
-    return this.http.put(this.baseUrl+"unit/update/"+id , obj ) 
+    return this.http.put(this.baseUrl+"unit/edit-unit/"+id , obj ) 
   }
 
   deleteUnit(id:any):Observable<any>{
-    return this.http.delete(this.baseUrl+"unit/delete/"+id) 
+    return this.http.delete(this.baseUrl+"unit/delete-unit/"+id) 
   }
 
   deleteUnitImage(id:any , i:any):Observable<any>{
-    return this.http.delete(this.baseUrl+"unit/image/delete/"+id+"/"+i)  
+    return this.http.delete(this.baseUrl+"unit/delete-images/"+id+"/"+i)  
   }
 
   addUnitImages(id:any , obj:any):Observable<any>{
-    return this.http.post(this.baseUrl+"unit/add-image/"+id , obj)
+    return this.http.post(this.baseUrl+"unit/add-images/"+id , obj)
   }
 
   changePaymentStat(id:any):Observable<any>{
-    return this.http.get(this.baseUrl+"unit/payment/activate/"+id)
+    return this.http.get(this.baseUrl+"unit/activate-payment/"+id)
   }
 
   sellUnit(obj:any , id:any):Observable<any>{
-    return this.http.post(this.baseUrl+"unit/sell/"+id , obj)
+    return this.http.post(this.baseUrl+"unit/sell-unit/"+id , obj)
   }
 
   logOut():Observable<any>{
@@ -126,6 +126,20 @@ export class GlobalService {
   invoices(id:any):Observable<any>{
     return this.http.get(this.baseUrl+"unit/payment/invoice/"+id , { responseType: 'blob' })
   }
+
+  deleteRole(id:any):Observable<any>{
+    return this.http.delete(this.baseUrl+"role/delete-role/"+id)
+  }
+
+  getUrls():Observable<any>{
+    return this.http.get(this.baseUrl+"role/urls")
+  }
+
+  addRole(obj:any):Observable<any>{
+    return this.http.post(this.baseUrl+"role/add-role" , obj)
+  }
+
+  
 
  
 

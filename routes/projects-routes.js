@@ -6,26 +6,26 @@ const upload = require('../app/controllers/middleware/file-upload')
 
 
 
-router.post('/add-project' , auth , upload.array("avatar") /*, roleCheck */, projectController.addProject)    //admin & superadmin
+router.post('/add-project' , auth , roleCheck , upload.array("avatar") /*, roleCheck */, projectController.addProject)    //admin & superadmin
 
-router.get('/show/all' , projectController.allProjects)
-router.get('/show/:id' , projectController.showProject)
+router.get('/show-all-projects' , projectController.allProjects)
+router.get('/show-project/:id' , projectController.showProject)
 
-router.get("/bulding/:buldingId" , auth ,/*  roleCheck ,*/projectController.getBulding)
-router.post("/add-bulding/:id", auth ,/* roleCheck ,*/projectController.addBulding)
-router.delete("/delete-bulding/:id", auth ,/* roleCheck ,*/projectController.deleteBulding)
-router.post("/bulding/image/:id",auth ,/* roleCheck ,*/ upload.array("avatar")  , projectController.addBuldingImage)
-router.delete("/bulding/delete-image/:id/:index",/* auth ,/* roleCheck ,*/ projectController.deleteBuldingImage)
+router.get("/bulding/:buldingId" , projectController.getBulding)
+router.post("/add-bulding/:id", auth , roleCheck ,projectController.addBulding)
+router.delete("/delete-bulding/:id", auth , roleCheck , projectController.deleteBulding)
+router.post("/add-images/bulding/:id",auth , roleCheck ,  upload.array("avatar")  , projectController.addBuldingImage)
+router.delete("/delete-images/bulding/:id/:index", auth , roleCheck , projectController.deleteBuldingImage)
 
 // router.get('/customers/:id' , auth /*, roleCheck */, projectController.projectCustomers)  admin & superadmin
 
 
-router.put('/update/:id', auth ,/* roleCheck ,*/ projectController.editProject)      //admin & superadmin
+router.put('/edit-project/:id', auth , roleCheck , projectController.editProject)      //admin & superadmin
 
-router.delete('/delete/:id', auth, /*roleCheck,*/ projectController.deleteProject)  //admin & superadmin
-router.delete('/image/delete/:id/:index', auth, /*roleCheck,*/ projectController.deleteImage)
+router.delete('/delete-project/:id', auth, roleCheck, projectController.deleteProject)  //admin & superadmin
+router.delete('/delete-images/:id/:index', auth, roleCheck, projectController.deleteImage)
 
-router.post('/add-image/:id', auth,/*roleCheck,*/upload.array("avatar") , projectController.uploadImage) //admin & superadmin)
+router.post('/add-images/:id', auth, roleCheck, upload.array("avatar") , projectController.uploadImage) //admin & superadmin)
 
 
 

@@ -5,7 +5,8 @@ const rolesSchema = new mongoose.Schema({
             type:"string",
             required:true,
             trim:true,
-            lowercase:true
+            lowercase:true,
+            unique:true
         },
 
         urls:[{

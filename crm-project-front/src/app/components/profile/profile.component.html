@@ -30,7 +30,7 @@
                                 <p *ngIf="!payment.paymentStat">Status : Not paid</p>
                                 <div class="justify-content-center col-12">
                                     <div class="col-12 p-2">
-                                        <a class="btn btn-dark col-12" (click)="invoice(payment._id)">Invoice</a>
+                                        <a class="btn btn-dark col-12" *ngIf="payment.paymentStat" (click)="invoice(payment._id)">Invoice</a>
                                     </div>
                                      </div>
                             </div>

@@ -32,8 +32,8 @@ export class AddProjectComponent {
     projectLocation: new FormControl("" , [Validators.required]),
     projectType: new FormControl("" , [Validators.required]),
     description: new FormControl("" , [Validators.required]),
-    numOfBuldings: new FormControl("" , [Validators.required , Validators.pattern("^[0-9]{2}$")]),
-    numOfFloors: new FormControl("" , [Validators.required , Validators.pattern("^[0-9]{2}$")]),
+    numOfBuldings: new FormControl("" , [Validators.required , Validators.pattern("^[0-9]{1,2}$")]),
+    numOfFloors: new FormControl("" , [Validators.required , Validators.pattern("^[0-9]{1,2}$")]),
     images:new FormControl("" , [Validators.required])
   })
  

@@ -1,26 +1,8 @@
-<!-- 
-     <div class="row p-3">
-         <div class="p-3 col-12 col-lg-4" *ngFor="let item of usersData , let i = index">
-             <div class="bg-dark text-light card p-3">
-                 <h4>Name : {{item.fName+ " "+ item.lName}}</h4>
-                 <h4>National ID : {{item.userName}}</h4>
-                 <h4>User Type :{{item.role.roleName}}</h4>
-                 <div class="row ">
-                 <div class="p-2 col-12 col-lg-4">
-                    <a class="btn btn-primary col-12" routerLink="/users/{{item._id}}">Details</a> 
-                </div>
-                 <div class="p-2 col-12 col-lg-4">
-                    <a class="btn btn-success col-12">Edit</a> 
-                </div>
-                 <div class="p-2 col-12 col-lg-4">
-                    <a class="btn btn-danger col-12" (click)="deleteUser(item._id , i)">Delete</a> 
-                </div>
-                </div>
-             </div>
-         </div> -->
 
-         <div class="col-12 p-3 d-flex flex-row"> 
-            <div class="col-12 col-lg-4 p-3" *ngFor="let item of usersData , let i = index">
+<div class="container-fluid">
+         <div class="p-3 row">
+            <h3>Customers :</h3> 
+            <div class="col-12 col-lg-4 p-3" *ngFor="let item of customersData , let i = index">
                 <div class="bg-light p-3">
                 <i class="bi bi-person-fill"></i>
                 <h5>{{item.fName+" "+item.lName}}</h5>
@@ -29,17 +11,45 @@
                 <h6>Phone : {{item.phone}}</h6>
                 <h6>Type : {{item.role.roleName}}</h6>
                 <div class="row">
-                    <div class="p-2 col-12 col-lg-4">
-                        <a class="btn btn-primary col-12" routerLink="/users/{{item._id}}">view</a> 
+                    <div class="p-2 col-4">
+                        <a class="btn btn-dark col-12" routerLink="/users/{{item._id}}">view</a> 
                     </div>
-                    <div class="p-2 col-12 col-lg-4">
-                       <a class="btn btn-success col-12" routerLink="/users/update/{{item._id}}">Edit</a> 
+                    <div class="p-2 col-4">
+                       <a class="btn btn-dark col-12" routerLink="/users/update/{{item._id}}">Edit</a> 
                    </div>
-                    <div class="p-2 col-12 col-lg-4">
-                       <a class="btn btn-danger col-12" (click)="deleteUser(item._id , i)">Delete</a> 
+                    <div class="p-2 col-4">
+                       <a class="btn btn-dark col-12" (click)="deleteUser(item._id , i , item.userType)">Delete</a> 
                    </div>
                    </div>
                 </div>
             </div>
             </div>
+            <div class="p-3 row" *ngIf="userRole == 'superadmin'"> 
+                <h3>Employees :</h3> 
+                <div class="col-12 col-lg-4 p-3" *ngFor="let item of employeesData , let i = index">
+                    <div class="alert alert-dark p-3">
+                    <i class="bi bi-person-fill"></i>
+                    <h5>{{item.fName+" "+item.lName}}</h5>
+                    <hr>
+                    <h6 class="text-gray">National ID : {{item.userName}}</h6>
+                    <h6>Phone : {{item.phone}}</h6>
+                    <h6>Type : {{item.role.roleName}}</h6>
+                    <div class="row">
+                        <div class="p-2 col-4">
+                            <a class="btn btn-dark col-12" routerLink="/users/{{item._id}}">view</a> 
+                        </div>
+                        <div class="p-2 col-4">
+                           <a class="btn btn-dark col-12" routerLink="/users/update/{{item._id}}">Edit</a> 
+                       </div>
+                        <div class="p-2 col-4">
+                           <a class="btn btn-dark col-12" (click)="deleteUser(item._id , i , item.userType)">Delete</a> 
+                       </div>
+                       </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+        <div class="d-flex col-12 justify-content-center align-items-center p-3"><a class="col-12 col-lg-2 btn btn-dark" routerLink="/register">Add User</a></div>
+ 
     

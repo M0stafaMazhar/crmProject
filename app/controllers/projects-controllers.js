@@ -9,8 +9,8 @@ class Projects{
         try{
             console.log(req.body);
             const projectData = projectModel(req.body)
-            let bulding = Array.apply(null, Array(req.body.numOfBuldings))
-            let floors = Array.apply(null, Array(req.body.numOfFloors))
+            let bulding = Array.apply(null, Array(Number(req.body.numOfBuldings)))
+            let floors = Array.apply(null, Array(Number(req.body.numOfFloors)))
             projectData.buldings = bulding.map((b , i) => b ={
                 buldingNum: i+1,
                 floors: floors.map((f , i)=> f ={
@@ -29,6 +29,7 @@ class Projects{
 
     static allProjects = async (req , res)=>{
         try{
+            console.log(req.url)
             const projects = await projectModel.find()
             if(!projects.length) throw new Error("No projects to show yet")
             helper.resHandler(res , 200 , true , projects , "all Projects")
@@ -40,6 +41,7 @@ class Projects{
 
     static showProject = async(req,res)=>{
         try{
+            console.log(req.url)
             const projectData = await projectModel.findById(req.params.id)
             if(!projectData) throw new Error("project not found")
             helper.resHandler(res , 200 , true , projectData , "Project found")
